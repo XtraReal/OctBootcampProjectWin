@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Pin[] pins;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        CalculateFallenPins();
     }
 
     // Update is called once per frame
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Loop Number: " + i);
         }
         int count = 0;
-        foreach ( Pin pin in pins)
+        foreach (Pin pin in pins)
         {
             if (pin.isFallen)
             {
