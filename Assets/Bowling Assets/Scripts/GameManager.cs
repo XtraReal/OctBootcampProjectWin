@@ -57,4 +57,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void ResetAllPins()
+    {
+        foreach(Pin pin in pins)
+        {
+            pin.ResetPin();
+        }
+    }
+
 }
