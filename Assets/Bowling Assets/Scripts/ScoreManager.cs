@@ -21,11 +21,42 @@ public class ScoreManager : MonoBehaviour
     // Set value for our frame score each time the ball is thrown
     public void SetFrameScore(int score)
     {
-        frames[currentFrame - 1] += score; // Setting the right frame index and
-                                           // adding the score value from the
-                                           // parameter passed
+        if(currentThrow == 1)
+        {
+            frames[currentFrame - 1] += score; // Setting the right frame index and
+                                                // adding the score value from the
+                                                // parameter passed
+            // Parallel process to chek spare
+            if (isSpare)
+            {
+                frames[currentFrame - 2] += score;
+                isSpare = false;
+            }
+            //-------------------------------
 
+            // Checking if this is a strike
+            if(score == 10)
+            {
+                if(currentFrame == 10)
+                {
+                    currentThrow++; // Wait for Ball 2
 
+                }
+                else
+                {
+                    isStrike = true;
+                    currentFrame++; // Move to next frame since full marks obtained
+                }
+
+                // TODO: GameManage to Reset Pins
+            }
+            else
+            {
+                currentThrow++; //Wait for BALL 2
+            }
+
+            return;
+        }
     }
 
     // Start is called before the first frame update
