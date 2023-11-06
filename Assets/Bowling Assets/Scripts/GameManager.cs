@@ -10,22 +10,36 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Pin[] pins;
 
+    private bool isGamePlaying = false;
+
     // Start is called before the first frame update
     void Start()
     {
         CalculateFallenPins();
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        isGamePlaying = true;
+        SetNextThrow();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //if (isGamePlaying == false && Input.GetKeyUp(KeyCode.X))
+        //{
+        //    StartGame();
+        //}
     }
 
     public void SetNextThrow()
     {
         // Get the ball to the start position
+        CalculateFallenPins();
         playerController.StartThrow();
+
     }
 
     public void CalculateFallenPins()

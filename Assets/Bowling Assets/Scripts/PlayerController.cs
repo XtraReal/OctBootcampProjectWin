@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         ballOffset = ballSpawnPoint.position - throwingArrow.position;
-        StartThrow();
+        //StartThrow(); // Moved to Game Manager
     }
 
     // Update is called once per frame
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     private void TryThrowBall()
     {
         //Throw the ball
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !wasBallThrown)
         {
             wasBallThrown = true;
             selectedBall.AddForce(throwingArrow.forward * throwForce,
