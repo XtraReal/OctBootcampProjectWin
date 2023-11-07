@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void SetNextThrow()
     {
+        //playerController.StartThrow();
         Invoke(nameof(NextThrow), 3.0f);
     }
 

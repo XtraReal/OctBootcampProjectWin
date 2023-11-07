@@ -21,11 +21,10 @@ public class Ball : MonoBehaviour
     //
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Ball has collided with " + collision.gameObject.name);
-
         if (collision.gameObject.CompareTag("Pin"))
         {
-            collision.gameObject.CompareTag("Pin");
+            Debug.Log("The object we collided with is " + collision.gameObject.name);
+            //collision.gameObject.CompareTag("Pin");
         }
     }
 
