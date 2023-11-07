@@ -27,13 +27,29 @@ public class Pin : MonoBehaviour
         // Check if pin has fallen
         //Debug.Log("The Angle between start rotation and current rotation is " +
         //    Quaternion.Angle(startRotation, transform.localRotation));
-        isFallen = Quaternion.Angle(startRotation, transform.localRotation) > pinFallAccuracy;
+        if (gameObject.activeSelf)
+        {
+            isFallen = Quaternion.Angle(startRotation, transform.localRotation) > pinFallAccuracy;
+        }
     }
 
     public void ResetPin()
     {
+        gameObject.SetActive(true);
         pinRb.velocity = Vector3.zero;
+        pinRb.isKinematic = true;
+
         transform.position = startPosition;
         transform.rotation = startRotation;
+        isFallen = false;
+        pinRb.isKinematic = false;
+    }
+
+    private void nTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pit"))
+        {
+            isFallen = true;
+        }
     }
 }
