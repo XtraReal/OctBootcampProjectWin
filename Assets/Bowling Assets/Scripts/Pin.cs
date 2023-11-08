@@ -45,7 +45,7 @@ public class Pin : MonoBehaviour
         pinRb.isKinematic = false;
     }
 
-    private void nTriggerEnter(Collider other)
+    private void TriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Pit"))
         {
