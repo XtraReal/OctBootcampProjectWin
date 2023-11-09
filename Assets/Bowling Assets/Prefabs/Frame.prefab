@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4616550724966769880}
   - component: {fileID: 6741560127645486113}
   m_Layer: 5
-  m_Name: ThrowScore_2_Txt
+  m_Name: ThrowScore_1_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 5112162666059291233}
   - component: {fileID: 4999586946817958510}
   m_Layer: 5
-  m_Name: ThrowScore_1_Txt
+  m_Name: ThrowScore_2_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 2447956342534396010}
   - component: {fileID: 409388897745737926}
   - component: {fileID: 8618512841663685461}
+  - component: {fileID: -6519195658706349919}
   m_Layer: 5
   m_Name: Frame
   m_TagString: Untagged
@@ -615,3 +616,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-6519195658706349919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254778520753960119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787876ca40f3e4573b6e1befde878f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtFrame: {fileID: 9073183318712560913}
+  txtThrow1: {fileID: 6741560127645486113}
+  txtThrow2: {fileID: 4999586946817958510}
+  txtThrow3: {fileID: 0}
+  txtTotal: {fileID: 1991744913933183293}
+  isFinalFrame: 0
