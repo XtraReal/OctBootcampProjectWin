@@ -7,6 +7,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private GameManager gameManager;
 
+    [SerializeField]
+    private UIManager uiManager;
+
 
     private int totalScore;
 
@@ -21,6 +24,9 @@ public class ScoreManager : MonoBehaviour
     // Set value for our frame score each time the ball is thrown
     public void SetFrameScore(int score)
     {
+        // Set UI
+        uiManager.SetFrameValue(currentFrame, currentThrow, score);
+
         // BALL 1
         if(currentThrow == 1)
         {
@@ -47,6 +53,7 @@ public class ScoreManager : MonoBehaviour
                 {
                     isStrike = true;
                     currentFrame++; // Move to next frame since full marks obtained
+                    uiManager.ShowStrike();
                 }
 
                 // Reset all pins via GameManager
@@ -85,6 +92,8 @@ public class ScoreManager : MonoBehaviour
                     currentFrame++;
                     currentThrow = 1;
                 }
+
+                uiManager.ShowSpare();
             }
             else
             {

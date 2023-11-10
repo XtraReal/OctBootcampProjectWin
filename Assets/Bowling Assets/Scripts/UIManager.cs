@@ -11,15 +11,65 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TMP_Text scoreText;
 
+    private FrameUI[] frames;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ResetFrameUI();
+        messageUIStrike.SetActive(false);
+        messageUISpare.SetActive(false);
+        gameOverUI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Reset FrameUI children objects under the FrameHolder Transform
+    public void ResetFrameUI() 
     {
-        
+        frames = new FrameUI[frameHolder.childCount];
+        for (int i=0; i < frameHolder.childCount; i++)
+        {
+            frames[i] = frameHolder.GetChild(i).GetComponent<FrameUI>();
+            frames[i].SetFrame(i + 1); //+1 is important because we index from 0 but the frames start at 1
+
+        }
+    }
+
+    public void SetFrameValue(int frame, int throwNumber, int score)
+    {
+        frames[frame - 1].UpdateScore(throwNumber, score);// -1 is because current frame position is indexed at 1 but the array indexes at 0
+
+    }
+
+    public void SetFrameTotal(int frame, int score)
+    {
+        frames[frame].UpdateTotal(score); // we are showing the score in the next frame
+    }
+
+    public void ShowStrike()
+    {
+        messageUIStrike.SetActive(false);
+        Invoke(nameof(HideStrike), 2.0f);
+    }
+
+    public void HideStrike()
+    {
+        messageUIStrike.SetActive(true);
+    }
+
+    public void ShowSpare()
+    {
+        messageUISpare.SetActive(false);
+        Invoke(nameof(HideSpare), 2.0f);
+    }
+
+    public void HideSpare()
+    {
+        messageUISpare.SetActive(true);
+    }
+
+    public void ShowGameOver(int totalScore)
+    {
+        gameOverUI.SetActive(true);
+        scoreText.text = totalScore.ToString();
     }
 }
