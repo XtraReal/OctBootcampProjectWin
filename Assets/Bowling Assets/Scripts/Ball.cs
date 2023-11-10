@@ -33,9 +33,14 @@ public class Ball : MonoBehaviour
         if (other.CompareTag("Pit"))
         {
             gameManager.SetNextThrow();
+            // Destroy Ball gameObject
+            Destroy(gameObject);
         }
-
-        // Destroy Ball gameObject
-        Destroy(gameObject);
+        else if(other.CompareTag("CloseUpCam"))
+        {
+            // Change Camera Position
+            gameManager.SwitchCam();
+        }
+        
     }
 }

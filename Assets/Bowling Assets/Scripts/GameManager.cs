@@ -11,14 +11,23 @@ public class GameManager : MonoBehaviour
     private ScoreManager scoreManager;
 
     [SerializeField]
+    private UIManager uiManager;
+
+    [SerializeField]
     private Pin[] pins;
+
+    [SerializeField]
+    private Camera mainCam, closeUpCam;
+
+    
 
     private bool isGamePlaying = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        CalculateFallenPins();
+        //CalculateFallenPins();
+        closeUpCam.enabled = false;
         StartGame();
     }
 
@@ -40,25 +49,43 @@ public class GameManager : MonoBehaviour
 
     public void SetNextThrow()
     {
-        //playerController.StartThrow();
         Invoke(nameof(NextThrow), 3.0f);
+
     }
 
     void NextThrow()
     {
+        int fallenPins = CalculateFallenPins();
+        scoreManager.SetFrameScore(fallenPins);
         if (scoreManager.currentFrame == 0)
         {
-            Debug.Log($"Game over {scoreManager.CalculateTotalScore()}");
+            uiManager.ShowGameOver(scoreManager.CalculateTotalScore());
+            //Debug.Log($"Game over {scoreManager.CalculateTotalScore()}");
+            return;
         }
-        else
-        {
-            Debug.Log($"FrameDebugger: {scoreManager.currentFrame}, Throw: {scoreManager.currentThrow}");
-            scoreManager.SetFrameScore(CalculateFallenPins());
-            Debug.Log($"Current Score: {scoreManager.CalculateTotalScore()}");
+        //else
+        //{
+        //    Debug.Log($"FrameDebugger: {scoreManager.currentFrame}, Throw: {scoreManager.currentThrow}");
+        //    scoreManager.SetFrameScore(CalculateFallenPins());
+        //    Debug.Log($"Current Score: {scoreManager.CalculateTotalScore()}");
 
-            // Get the ball to the start position
-            playerController.StartThrow();
+        //    // Get the ball to the start position
+        //    playerController.StartThrow();
+        //}
+
+        // Calculate frame total for UI
+        int frameTotal = 0;
+        for (int i=0; i<scoreManager.currentFrame-1; i++)
+        {
+            frameTotal += scoreManager.GetFrameScores()[i];
+            uiManager.SetFrameTotal(i, frameTotal);
         }
+
+        // Switch back to main Camera
+        SwitchCam();
+
+        // Get the ball to the start position for throwing
+        playerController.StartThrow();
     }
 
     public int CalculateFallenPins()
@@ -89,4 +116,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SwitchCam()
+    {
+        mainCam.enabled = !mainCam.enabled;
+        closeUpCam.enabled = !closeUpCam.enabled;
+    }
 }

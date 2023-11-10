@@ -159,4 +159,9 @@ public class ScoreManager : MonoBehaviour
         currentThrow = 1;
         frames = new int[10];
     }
+
+    public int[] GetFrameScores()
+    {
+        return frames;
+    }
 }
