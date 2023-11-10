@@ -70,7 +70,7 @@ public class ScoreManager : MonoBehaviour
         // BALL 2
         if (currentThrow == 2)
         {
-            frames[currentFrame] += score;
+            frames[currentFrame-1] += score;
 
             // Parallel process to check strike
             if (isStrike)
@@ -102,6 +102,7 @@ public class ScoreManager : MonoBehaviour
                     // End of all throws
                     currentThrow = 0;
                     currentFrame = 0;
+                    return;
                 }
                 else
                 {

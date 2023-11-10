@@ -6,6 +6,8 @@ public class Ball : MonoBehaviour
 {
 
     private GameManager gameManager;
+
+    bool hasCollided = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,9 @@ public class Ball : MonoBehaviour
     //
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Pin"))
+        if (collision.gameObject.CompareTag("Pin") && !hasCollided)
         {
+            hasCollided = true;
             Debug.Log("The object we collided with is " + collision.gameObject.name);
             //collision.gameObject.CompareTag("Pin");
         }
