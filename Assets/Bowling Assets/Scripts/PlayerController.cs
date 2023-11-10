@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 ballOffset;
     private bool wasBallThrown;
     private Rigidbody selectedBall;
+    private float horizontalAxis;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,15 @@ public class PlayerController : MonoBehaviour
         if(!wasBallThrown)
         {
             //Moving with constraints
+
+#if UNITY_STANDALONE || UNITY_STANDALONE_OSX || UNITY_EDITOR || UNITY_WIN
             float movePosition = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+#elif UNITY_IOS || UNITY_ANDROID
+            // Setup mobile control
+            float movePosition = Input.GetAxis("Horizontal") * speed * Time.deltaTime; // It may be greyed out because it is for Android/iOS platforms
+
+
+#endif
             throwingArrow.position = new Vector3(
                 Mathf.Clamp(throwingArrow.position.x + movePosition, arrowMinPosition, arrowMaxPosition),
                 throwingArrow.position.y,
@@ -86,5 +95,32 @@ public class PlayerController : MonoBehaviour
     private int GetRandomNumber(int min, int max)
     {
         return Random.Range(min, max);
+    }
+
+    public void setHorizontal(bool isLeft)
+    {
+        if (isLeft)
+        {
+            horizontalAxis = -1;
+        }
+        else
+        {
+            horizontalAxis = 1;
+        }
+    }
+
+    public void ResetHorizontal()
+    {
+        horizontalAxis = 0;
+    }
+
+    public void TryThrowBallMobile()
+    {
+        if (!wasBallThrown)
+        {
+            wasBallThrown = true;
+            selectedBall.AddForce(throwingArrow.forward * throwForce, ForceMode.Impulse);
+            throwingArrowAnim.SetBool("Aiming", false);
+        }
     }
 }

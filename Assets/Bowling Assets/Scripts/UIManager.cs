@@ -47,24 +47,24 @@ public class UIManager : MonoBehaviour
 
     public void ShowStrike()
     {
-        messageUIStrike.SetActive(false);
+        messageUIStrike.SetActive(true);
         Invoke(nameof(HideStrike), 2.0f);
     }
 
     public void HideStrike()
     {
-        messageUIStrike.SetActive(true);
+        messageUIStrike.SetActive(false);
     }
 
     public void ShowSpare()
     {
-        messageUISpare.SetActive(false);
+        messageUISpare.SetActive(true);
         Invoke(nameof(HideSpare), 2.0f);
     }
 
     public void HideSpare()
     {
-        messageUISpare.SetActive(true);
+        messageUISpare.SetActive(false);
     }
 
     public void ShowGameOver(int totalScore)
