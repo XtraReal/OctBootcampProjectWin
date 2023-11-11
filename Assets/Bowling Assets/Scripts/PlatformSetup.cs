@@ -11,7 +11,7 @@ public class PlatformSetup : MonoBehaviour
     void Start()
     {
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
-    mobileControl.setActive(true);
+    mobileControl.SetActive(true);
 #endif
         
     }
