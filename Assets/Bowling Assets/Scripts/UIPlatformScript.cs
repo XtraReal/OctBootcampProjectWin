@@ -11,10 +11,9 @@ public class UIPlatformScript : MonoBehaviour
     void Start()
     {
 #if UNITY_ANDROID || UNITY_IOS
-
-#elif UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_EDI
-     instructionText.text = "Press A to Mobe LEFT and D to move RIGHT.\nHit the SPACE button to throw ball. to throw ball";
-
+    instructionText.text = "Press LEFT button to move LEFT and RIGHT button to move RIGHT.\r\nHit the THROW button to throw ball";
+#elif UNITY_STANDALONE || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_EDITOR
+    instructionText.text = "Press A to move LEFT and D to move RIGHT.\r\nHit the SPACE button to throw ball";
 #endif
     }
 

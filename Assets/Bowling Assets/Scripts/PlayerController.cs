@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 ballOffset;
     private bool wasBallThrown;
     private Rigidbody selectedBall;
+    [SerializeField]
     private float horizontalAxis;
 
     // Start is called before the first frame update
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
             float movePosition = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 #elif UNITY_IOS || UNITY_ANDROID
             // Setup mobile control
-            float movePosition = Input.GetAxis("Horizontal") * speed * Time.deltaTime; // It may be greyed out because it is for Android/iOS platforms
+            float movePosition = horizontalAxis * speed * Time.deltaTime; // It may be greyed out because it is for Android/iOS platforms
 
 
 #endif

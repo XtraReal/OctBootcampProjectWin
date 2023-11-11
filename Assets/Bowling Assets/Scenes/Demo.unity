@@ -4049,7 +4049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376467b0ccd0b4322a4b4e80c972adf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobiileControl: {fileID: 1735304688}
+  mobileControl: {fileID: 1735304688}
 --- !u!4 &1163759898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1847670744502175256, guid: 1d892979b75877f4ab1f7970fe2233ef,
