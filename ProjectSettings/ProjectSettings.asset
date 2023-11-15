@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: XtraReak
+  companyName: XtraReal
   productName: Bowling
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -159,8 +159,8 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.UnityTechnologies.com.unity.template.urpblank
-    Standalone: com.XtraReak.Bowling
-    iPhone: com.XtraReak.Bowling
+    Standalone: com.XtraReal.Bowling
+    iPhone: com.XtraReal.Bowling
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -241,7 +241,7 @@ PlayerSettings:
   iOSManualSigningProvisioningProfileType: 0
   tvOSManualSigningProvisioningProfileType: 0
   VisionOSManualSigningProvisioningProfileType: 0
-  appleEnableAutomaticSigning: 0
+  appleEnableAutomaticSigning: 1
   iOSRequireARKit: 0
   iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
@@ -558,9 +558,9 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
-  locationUsageDescription: 
-  microphoneUsageDescription: 
+  cameraUsageDescription: None
+  locationUsageDescription: None
+  microphoneUsageDescription: None
   bluetoothUsageDescription: 
   macOSTargetOSVersion: 10.13.0
   switchNMETAOverride: 
